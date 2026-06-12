@@ -1,0 +1,375 @@
+[
+  {
+    "id": "pg-1",
+    "name": "Ivy Heights Student Living",
+    "price": 16000,
+    "location": "University North Hub, New Delhi",
+    "image": "/images/pg_room_modern.png",
+    "phone": "+91 98765 43210",
+    "ownerEmail": "owner@ivyheights.com",
+    "safetyScore": 92,
+    "safetyBreakdown": {
+      "cctv": 95,
+      "guard": 98,
+      "streetlights": 90,
+      "emergency": 88,
+      "crimeRate": 90
+    },
+    "compatibility": {
+      "hospital": true,
+      "streetlights": true,
+      "walkingDistance": true,
+      "wifi": true,
+      "ac": true,
+      "laundry": true,
+      "gym": false
+    },
+    "messMenu": {
+      "Monday": {
+        "breakfast": "Idli Sambar & Tea",
+        "lunch": "Rajma Chawal, Salad & Curd",
+        "dinner": "Roti, Paneer Masala, Dal & Kheer"
+      },
+      "Tuesday": {
+        "breakfast": "Aloo Paratha & Dahi",
+        "lunch": "Yellow Dal, Mix Veg, Roti & Rice",
+        "dinner": "Roti, Chicken Curry (or Mushroom Matar), Rice"
+      },
+      "Wednesday": {
+        "breakfast": "Bread Butter/Omelette",
+        "lunch": "Chole Bhature & Lassi",
+        "dinner": "Roti, Aloo Gobi, Dal & Gulab Jamun"
+      },
+      "Thursday": {
+        "breakfast": "Veg Poha & Tea",
+        "lunch": "Kadhi Chawal & Roti",
+        "dinner": "Roti, Bhindi Fry, Dal Tadka"
+      },
+      "Friday": {
+        "breakfast": "Puri Sabji",
+        "lunch": "Veg Biryani, Raita & Salads",
+        "dinner": "Roti, Egg Curry (or Paneer Kofta), Rice"
+      },
+      "Saturday": {
+        "breakfast": "Uttapam & Coconut Chutney",
+        "lunch": "Aloo Gobi, Rice, Dal & Curd",
+        "dinner": "Special Pav Bhaji & Ice Cream"
+      },
+      "Sunday": {
+        "breakfast": "Chole Kulche & Tea",
+        "lunch": "Shahi Paneer, Jeera Rice & Butter Roti",
+        "dinner": "Roti, Seasonal Veg, Moong Dal"
+      }
+    },
+    "reviews": [
+      {
+        "id": "r1",
+        "studentName": "Rahul Verma",
+        "rating": 5,
+        "comment": "Food is amazing! The paneer on Monday dinner is exceptional.",
+        "date": "2026-06-05",
+        "verified": true
+      },
+      {
+        "id": "r2",
+        "studentName": "Sneha Roy",
+        "rating": 4,
+        "comment": "Very clean kitchen. Menu is followed strictly.",
+        "date": "2026-06-08",
+        "verified": true
+      }
+    ]
+  },
+  {
+    "id": "pg-2",
+    "name": "Apex Co-Living & Suites",
+    "price": 18500,
+    "location": "Metro Station Boulevard, New Delhi",
+    "image": "/images/pg_room_luxury.png",
+    "phone": "+91 99999 88888",
+    "ownerEmail": "owner@apexcoliving.com",
+    "safetyScore": 95,
+    "safetyBreakdown": {
+      "cctv": 98,
+      "guard": 100,
+      "streetlights": 95,
+      "emergency": 92,
+      "crimeRate": 92
+    },
+    "compatibility": {
+      "hospital": true,
+      "streetlights": true,
+      "walkingDistance": false,
+      "wifi": true,
+      "ac": true,
+      "laundry": true,
+      "gym": true
+    },
+    "messMenu": {
+      "Monday": {
+        "breakfast": "Pancakes & Coffee",
+        "lunch": "Dal Makhani, Butter Roti, Rice & Fruit",
+        "dinner": "Veg Jalfrezi, Roti, Dal Fry & Rasgulla"
+      },
+      "Tuesday": {
+        "breakfast": "Poha & Orange Juice",
+        "lunch": "Palak Paneer, Roti, Jeera Rice",
+        "dinner": "Butter Chicken / Paneer Makhani, Naan, Rice"
+      },
+      "Wednesday": {
+        "breakfast": "Sandwiches & Fruit Bowl",
+        "lunch": "Veg Korma, Roti, Pulav",
+        "dinner": "Matar Paneer, Dal, Rice, Custard"
+      },
+      "Thursday": {
+        "breakfast": "Gobi Paratha",
+        "lunch": "Rajma Chawal & Papad",
+        "dinner": "Egg Bhurji / Paneer Bhurji, Roti, Dal"
+      },
+      "Friday": {
+        "breakfast": "Upma & Filter Coffee",
+        "lunch": "Kashmiri Dum Aloo, Rice, Roti",
+        "dinner": "Shahi Soyabean, Rice, Roti, Ice Cream"
+      },
+      "Saturday": {
+        "breakfast": "French Toast & Milk",
+        "lunch": "Chana Masala, Puri & Halwa",
+        "dinner": "Special Hakka Noodles & Manchurian"
+      },
+      "Sunday": {
+        "breakfast": "Stuffed Paratha & Curd",
+        "lunch": "Hyderabadi Dum Biryani (Veg/Non-Veg)",
+        "dinner": "Roti, Dal Tadka, Aloo Jeera"
+      }
+    },
+    "reviews": [
+      {
+        "id": "r3",
+        "studentName": "Ananya Sen",
+        "rating": 5,
+        "comment": "Apex offers top tier food. Saturday noodles are delicious.",
+        "date": "2026-06-06",
+        "verified": true
+      }
+    ]
+  },
+  {
+    "id": "pg-3",
+    "name": "Green Oasis Girls PG",
+    "price": 9500,
+    "location": "Sector 4, Green Park, New Delhi",
+    "image": "/images/pg_room_cozy.png",
+    "phone": "+91 96543 21098",
+    "ownerEmail": "owner@greenoasis.com",
+    "safetyScore": 88,
+    "safetyBreakdown": {
+      "cctv": 90,
+      "guard": 85,
+      "streetlights": 90,
+      "emergency": 85,
+      "crimeRate": 90
+    },
+    "compatibility": {
+      "hospital": true,
+      "streetlights": true,
+      "walkingDistance": false,
+      "wifi": true,
+      "ac": false,
+      "laundry": true,
+      "gym": false
+    },
+    "messMenu": {
+      "Monday": {
+        "breakfast": "Tea & Toast with Butter",
+        "lunch": "Mixed Dal, Rice, Roti & Seasonal Veg",
+        "dinner": "Aloo Matar Sabji, Roti, Rice & Dal"
+      },
+      "Tuesday": {
+        "breakfast": "SuJi Halwa & Poha",
+        "lunch": "Kadhi Chawal, Salad",
+        "dinner": "Egg Curry / Soyabean, Roti & Dal"
+      },
+      "Wednesday": {
+        "breakfast": "Aloo Onion Paratha",
+        "lunch": "Rajma Chawal, Curd",
+        "dinner": "Lauki Kofta, Roti, Rice & Moong Dal"
+      },
+      "Thursday": {
+        "breakfast": "Tea & Sprouts/Fruit",
+        "lunch": "Jeera Aloo, Roti, Rice, Yellow Dal",
+        "dinner": "Veg Manchurian, Roti & Rice"
+      },
+      "Friday": {
+        "breakfast": "Dosa & Sambar",
+        "lunch": "Chole Chawal, Roti, Papad",
+        "dinner": "Paneer Butter Masala, Butter Roti, Kheer"
+      },
+      "Saturday": {
+        "breakfast": "Veg Vermicelli & Tea",
+        "lunch": "Dal Fry, Rice, Seasonal Veg",
+        "dinner": "Pav Bhaji & Sweet"
+      },
+      "Sunday": {
+        "breakfast": "Puri Sabji & Tea",
+        "lunch": "Special Veg Biryani, Raita",
+        "dinner": "Roti, Green Sabji, Dal"
+      }
+    },
+    "reviews": [
+      {
+        "id": "r4",
+        "studentName": "Megha Gupta",
+        "rating": 4,
+        "comment": "Decent food. Tastes like home-cooked meals.",
+        "date": "2026-06-07",
+        "verified": true
+      }
+    ]
+  },
+  {
+    "id": "pg-4",
+    "name": "Scholar's Nest PG",
+    "price": 7000,
+    "location": "College Lane Back Alley, New Delhi",
+    "image": "/images/pg_room_cozy.png",
+    "phone": "+91 95555 44444",
+    "ownerEmail": "owner@scholarsnest.com",
+    "safetyScore": 78,
+    "safetyBreakdown": {
+      "cctv": 75,
+      "guard": 70,
+      "streetlights": 70,
+      "emergency": 75,
+      "crimeRate": 80
+    },
+    "compatibility": {
+      "hospital": false,
+      "streetlights": false,
+      "walkingDistance": true,
+      "wifi": true,
+      "ac": false,
+      "laundry": false,
+      "gym": false
+    },
+    "messMenu": {
+      "Monday": {
+        "breakfast": "Tea & Biscuits/Toast",
+        "lunch": "Aloo Gobi, Roti, Rice, Dal",
+        "dinner": "Tinda Sabji, Roti, Rice & Dal"
+      },
+      "Tuesday": {
+        "breakfast": "Poha",
+        "lunch": "Black Chana Masala, Rice & Roti",
+        "dinner": "Gourd (Lauki) Sabji, Roti, Dal"
+      },
+      "Wednesday": {
+        "breakfast": "Aloo Paratha",
+        "lunch": "Kadhi Chawal",
+        "dinner": "Paneer Bhurji (limited), Roti, Dal"
+      },
+      "Thursday": {
+        "breakfast": "Bread Butter",
+        "lunch": "Alley Veg Thali (Dal, Rice, Roti)",
+        "dinner": "Mix Veg, Roti, Rice, Dal"
+      },
+      "Friday": {
+        "breakfast": "Vermicelli",
+        "lunch": "Rajma Chawal",
+        "dinner": "Aloo Shimla Mirch, Roti, Dal"
+      },
+      "Saturday": {
+        "breakfast": "Tea & Toast",
+        "lunch": "Dal Rice & Sabji",
+        "dinner": "Khichdi & Raita"
+      },
+      "Sunday": {
+        "breakfast": "Puri Aloo",
+        "lunch": "Veg Biryani (Simple)",
+        "dinner": "Roti, Dal Fry, Raita"
+      }
+    },
+    "reviews": [
+      {
+        "id": "r5",
+        "studentName": "Abhishek Das",
+        "rating": 3,
+        "comment": "Budget friendly, but food is very repetitive and simple.",
+        "date": "2026-06-02",
+        "verified": true
+      }
+    ]
+  },
+  {
+    "id": "pg-5",
+    "name": "Metro Oasis Boys PG",
+    "price": 12000,
+    "location": "East Extension Block B, New Delhi",
+    "image": "/images/pg_room_modern.png",
+    "phone": "+91 93333 22222",
+    "ownerEmail": "owner@metrooasis.com",
+    "safetyScore": 85,
+    "safetyBreakdown": {
+      "cctv": 90,
+      "guard": 80,
+      "streetlights": 88,
+      "emergency": 82,
+      "crimeRate": 85
+    },
+    "compatibility": {
+      "hospital": true,
+      "streetlights": true,
+      "walkingDistance": false,
+      "wifi": true,
+      "ac": true,
+      "laundry": false,
+      "gym": false
+    },
+    "messMenu": {
+      "Monday": {
+        "breakfast": "Tea & Butter Pav",
+        "lunch": "Lobia Masala, Roti, Rice & Dahi",
+        "dinner": "Aloo Matar, Dal Tadka, Roti, Rice"
+      },
+      "Tuesday": {
+        "breakfast": "Methi Paratha",
+        "lunch": "Palak Rice, Dal Fry, Salad",
+        "dinner": "Chicken Masala / Shahi Paneer, Roti, Rice"
+      },
+      "Wednesday": {
+        "breakfast": "Poha & Tea",
+        "lunch": "Chole Chawal, Roti",
+        "dinner": "Mix Veg Sabji, Roti, Dal"
+      },
+      "Thursday": {
+        "breakfast": "Veg Sandwich",
+        "lunch": "Kadhi Chawal, Salad",
+        "dinner": "Soya chunks curry, Roti, Dal, Rice"
+      },
+      "Friday": {
+        "breakfast": "Bread Omelette / Sprouts",
+        "lunch": "Rajma Chawal, Papad",
+        "dinner": "Paneer Matar, Butter Roti, Rice, Sweet"
+      },
+      "Saturday": {
+        "breakfast": "Vermicelli",
+        "lunch": "Egg Bhurji / Aloo Jeera with Roti",
+        "dinner": "Hakka Noodles & Manchurian"
+      },
+      "Sunday": {
+        "breakfast": "Puri Sabji & Tea",
+        "lunch": "Special Chicken Biryani / Veg Biryani",
+        "dinner": "Khichdi, Papad & Chutney"
+      }
+    },
+    "reviews": [
+      {
+        "id": "r6",
+        "studentName": "Vikranth Rao",
+        "rating": 4,
+        "comment": "Biryani on Sunday lunch is very good. Chicken curry is decent.",
+        "date": "2026-06-04",
+        "verified": true
+      }
+    ]
+  }
+]
