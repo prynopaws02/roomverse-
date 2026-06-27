@@ -72,9 +72,9 @@ export default function LoginPage() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-blue/10 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-neon-purple/10 blur-[120px] pointer-events-none"></div>
 
-      <div className="w-full max-w-md glass-premium p-8 rounded-2xl relative z-10 animate-float">
+      <div className="w-full max-w-md glass-premium p-8 rounded-[24px] relative z-10 animate-float">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center p-3 bg-neon-blue/10 rounded-xl mb-4 border border-neon-blue/20">
+          <div className="inline-flex items-center justify-center p-3 bg-neon-blue/10 rounded-[16px] mb-4 border border-neon-blue/20">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-neon-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
@@ -88,13 +88,13 @@ export default function LoginPage() {
         </div>
 
         {/* Role Select Tabs */}
-        <div className="flex p-1 bg-slate-900/80 rounded-lg mb-6 border border-slate-800/80">
+        <div className="flex p-1 bg-slate-900/80 rounded-[12px] mb-6 border border-slate-800/80">
           {(['student', 'owner', 'admin'] as UserRole[]).map((r) => (
             <button
               key={r}
               type="button"
               onClick={() => handleRoleChange(r)}
-              className={`flex-1 py-2 text-xs font-semibold rounded-md transition-all capitalize duration-300 ${
+              className={`flex-1 py-2 text-xs font-semibold rounded-[10px] transition-all capitalize duration-300 ${
                 role === r
                   ? 'bg-gradient-to-r from-neon-blue to-neon-purple text-white shadow-md'
                   : 'text-slate-400 hover:text-slate-200'
@@ -107,7 +107,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="p-3 bg-neon-rose/10 border border-neon-rose/20 text-neon-rose rounded-lg text-xs font-medium">
+            <div className="p-3 bg-neon-rose/10 border border-neon-rose/20 text-neon-rose rounded-[12px] text-xs font-medium">
               {error}
             </div>
           )}
@@ -120,7 +120,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-neon-blue/60 focus:ring-1 focus:ring-neon-blue/30 text-sm transition-all duration-300"
+              className="w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-[16px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-neon-blue/60 focus:ring-1 focus:ring-neon-blue/30 text-sm transition-all duration-300"
               placeholder="name@college.edu"
               required
             />
@@ -139,7 +139,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-neon-blue/60 focus:ring-1 focus:ring-neon-blue/30 text-sm transition-all duration-300"
+              className="w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-[16px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-neon-blue/60 focus:ring-1 focus:ring-neon-blue/30 text-sm transition-all duration-300"
               required
             />
           </div>
@@ -147,7 +147,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-xl shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center text-sm cursor-pointer"
+            className="w-full py-3.5 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-[16px] shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center text-sm cursor-pointer"
           >
             {loading ? (
               <>

@@ -174,19 +174,19 @@ export default function AdminDashboard() {
               { title: 'Avg Monthly Rent', value: `₹${getAverageRent().toLocaleString('en-IN')}`, desc: 'Platform rent average', color: 'text-neon-teal' },
               { title: 'Avg Safety Index', value: `${getAverageSafety()}%`, desc: 'Average safety score', color: 'text-neon-rose' }
             ].map((card, i) => (
-              <div key={i} className="glass p-5 rounded-2xl border border-slate-800/80 shadow-md flex flex-col justify-between">
+              <div key={i} className="glass p-5 rounded-[24px] border border-slate-800/80 shadow-md flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">{card.title}</span>
                   <span className={`block text-3xl font-black ${card.color} mt-2`}>{card.value}</span>
                 </div>
-                <span className="text-[10px] text-slate-500 font-semibold uppercase mt-3">{card.desc}</span>
+                  <span className="text-[10px] text-slate-500 font-semibold uppercase mt-3">{card.desc}</span>
               </div>
             ))}
           </div>
         )}
 
         {/* Safety Score Configuration Board */}
-        <div className="glass p-6 rounded-2xl border border-slate-800/80 shadow-lg">
+        <div className="glass p-6 rounded-[24px] border border-slate-800/80 shadow-lg">
           <div>
             <h2 className="text-lg font-black text-slate-200">Safety Score Configurator</h2>
             <p className="text-xs text-slate-400 mt-0.5">Override and adjust security attributes to recalculate PG safety metrics</p>
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
               </div>
             ) : (
               pgs.map((pgItem) => (
-                <div key={pgItem.id} className="p-4 bg-slate-900/30 border border-slate-800/60 rounded-2xl space-y-4">
+                <div key={pgItem.id} className="p-4 bg-slate-900/30 border border-slate-800/60 rounded-[24px] space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
                       <h4 className="font-extrabold text-slate-200 text-sm">{pgItem.name}</h4>
@@ -216,7 +216,7 @@ export default function AdminDashboard() {
                       </div>
                       <button
                         onClick={() => handleEditSafety(pgItem)}
-                        className="px-4 py-2 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 font-bold text-[10px] rounded-xl transition-all cursor-pointer"
+                        className="px-4 py-2 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 font-bold text-[10px] rounded-[14px] transition-all cursor-pointer"
                       >
                         {activePgEditId === pgItem.id ? 'Close Settings' : 'Adjust Safety Metrics'}
                       </button>

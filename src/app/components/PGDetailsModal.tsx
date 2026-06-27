@@ -237,7 +237,7 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
               </div>
 
               {/* Day Menu Card */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div className="bg-white p-5 rounded-[24px] border border-slate-200 shadow-sm space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-slate-100">
                   <h4 className="font-extrabold text-base text-royal-green">{menuDay} Menu</h4>
                   <span className="text-xs font-medium text-slate-400">Meal Schedule & Options</span>
@@ -249,7 +249,7 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
                     { meal: 'Lunch', time: '01:00 PM - 02:30 PM', icon: '🍚', menu: pg.messMenu[menuDay]?.lunch },
                     { meal: 'Dinner', time: '08:30 PM - 10:00 PM', icon: '🍲', menu: pg.messMenu[menuDay]?.dinner }
                   ].map((item) => (
-                    <div key={item.meal} className="p-4 bg-slate-50 border border-slate-100 rounded-xl space-y-2 flex flex-col justify-between animate-in fade-in duration-350">
+                    <div key={item.meal} className="p-4 bg-slate-50 border border-slate-100 rounded-[16px] space-y-2 flex flex-col justify-between animate-in fade-in duration-350">
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">{item.icon}</span>
@@ -272,7 +272,7 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
             <div className="space-y-6">
               
               {/* Ratings Summary card */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white border border-slate-200 shadow-sm rounded-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white border border-slate-200 shadow-sm rounded-[24px]">
                 <div className="flex flex-col items-center justify-center p-3 border-b md:border-b-0 md:border-r border-slate-100 text-center">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-wide">Average Mess Rating</span>
                   <span className="text-3xl font-black text-amber-500 mt-2">★ {getAverageFoodRating()}</span>
@@ -288,13 +288,13 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
                     {error && <div className="text-[11px] text-red-600 font-bold">{error}</div>}
                     
                     <div className="flex gap-2">
-                      <div className="flex-1 flex items-center bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-500 text-xs font-semibold select-none">
+                      <div className="flex-1 flex items-center bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-[12px] text-slate-500 text-xs font-semibold select-none">
                         <span className="mr-1.5 text-emerald-600">✓</span> Verified Student: {studentName}
                       </div>
                       <select
                         value={rating}
                         onChange={(e) => setRating(Number(e.target.value))}
-                        className="bg-white border border-slate-200 rounded-lg px-2 text-amber-500 text-xs font-black focus:outline-none focus:border-royal-green cursor-pointer shadow-sm"
+                        className="bg-white border border-slate-200 rounded-[12px] px-2 text-amber-500 text-xs font-black focus:outline-none focus:border-royal-green cursor-pointer shadow-sm"
                       >
                         <option value="5">★★★★★ 5 Stars</option>
                         <option value="4">★★★★☆ 4 Stars</option>
@@ -310,20 +310,20 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
                         placeholder="Describe food quality, hygiene, or menu variety..."
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                        className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-800 text-xs placeholder-slate-400 focus:outline-none focus:border-royal-green shadow-sm"
+                        className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-[12px] text-slate-800 text-xs placeholder-slate-400 focus:outline-none focus:border-royal-green shadow-sm"
                         required
                       />
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="px-4 bg-royal-green hover:bg-emerald-800 text-white font-bold rounded-lg text-xs transition-colors cursor-pointer flex items-center justify-center shadow-sm"
+                        className="px-4 bg-royal-green hover:bg-emerald-800 text-white font-bold rounded-[12px] text-xs transition-colors cursor-pointer flex items-center justify-center shadow-sm"
                       >
                         {submitting ? 'Posting...' : 'Submit'}
                       </button>
                     </div>
                   </form>
                 ) : (
-                  <div className="md:col-span-2 p-4 bg-rose-50 border border-rose-100 rounded-2xl flex flex-col justify-center items-center text-center space-y-1 min-h-[110px]">
+                  <div className="md:col-span-2 p-4 bg-rose-50 border border-rose-100 rounded-[24px] flex flex-col justify-center items-center text-center space-y-1 min-h-[110px]">
                     <span className="text-lg">🔒</span>
                     <h5 className="text-xs font-black text-rose-800 uppercase tracking-wider">Mess Ratings Restricted</h5>
                     <p className="text-[10px] text-rose-600 max-w-xs leading-relaxed font-semibold">
@@ -339,7 +339,7 @@ export default function PGDetailsModal({ pg, onClose, onAddReview }: PGDetailsMo
                   <p className="text-center text-xs text-slate-400 py-6">No food reviews yet. Be the first to leave one!</p>
                 ) : (
                   pg.reviews.map((rev) => (
-                    <div key={rev.id} className="p-4 bg-white border border-slate-200 shadow-sm rounded-xl space-y-2">
+                    <div key={rev.id} className="p-4 bg-white border border-slate-200 shadow-sm rounded-[16px] space-y-2">
                       <div className="flex justify-between items-start">
                         <div>
                           <div className="flex items-center gap-1.5">

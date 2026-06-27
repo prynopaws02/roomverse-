@@ -215,14 +215,14 @@ export default function OwnerDashboard() {
         <div className="space-y-6">
           
           {/* General Listing Info */}
-          <div className="glass p-6 rounded-2xl border border-slate-800/80 shadow-lg relative overflow-hidden">
+          <div className="glass p-6 rounded-[24px] border border-slate-800/80 shadow-lg relative overflow-hidden">
             <h3 className="font-extrabold text-lg text-slate-200 mb-4 flex items-center gap-2">
               📝 Manage Rent Prices
             </h3>
             
             <form onSubmit={handleSaveListing} className="space-y-4">
               {saveListingSuccess && (
-                <div className="p-3 bg-neon-teal/10 border border-neon-teal/20 text-neon-teal rounded-xl text-xs font-semibold">
+                <div className="p-3 bg-neon-teal/10 border border-neon-teal/20 text-neon-teal rounded-[12px] text-xs font-semibold">
                   ✓ Rent updated successfully!
                 </div>
               )}
@@ -236,13 +236,13 @@ export default function OwnerDashboard() {
                     type="number"
                     value={priceInput}
                     onChange={(e) => setPriceInput(Number(e.target.value))}
-                    className="flex-1 px-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-200 focus:outline-none focus:border-neon-blue/60 text-sm font-semibold"
+                    className="flex-1 px-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-[14px] text-slate-200 focus:outline-none focus:border-neon-blue/60 text-sm font-semibold"
                     required
                   />
                   <button
                     type="submit"
                     disabled={saveListingLoading}
-                    className="px-5 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-xl text-xs hover:shadow-md cursor-pointer flex items-center justify-center"
+                    className="px-5 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-[14px] text-xs hover:shadow-md cursor-pointer flex items-center justify-center"
                   >
                     {saveListingLoading ? 'Saving...' : 'Update Rent'}
                   </button>
@@ -252,7 +252,7 @@ export default function OwnerDashboard() {
           </div>
 
           {/* Student Chat Replies Panel */}
-          <div className="glass p-6 rounded-2xl border border-slate-800/80 shadow-lg flex flex-col h-[380px]">
+          <div className="glass p-6 rounded-[24px] border border-slate-800/80 shadow-lg flex flex-col h-[380px]">
             <h3 className="font-extrabold text-lg text-slate-200 mb-3 flex items-center gap-2">
               💬 Incoming Inquiries
             </h3>
@@ -263,11 +263,11 @@ export default function OwnerDashboard() {
             </div>
 
             {/* Chat Body */}
-            <div className="flex-1 overflow-y-auto space-y-3 pr-1 bg-slate-950/20 p-2.5 rounded-xl border border-slate-800/40 mb-3 flex flex-col">
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1 bg-slate-950/20 p-2.5 rounded-[16px] border border-slate-800/40 mb-3 flex flex-col">
               {chatLogs.map((log, i) => (
                 <div
                   key={i}
-                  className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${
+                  className={`max-w-[85%] p-3 rounded-[16px] text-xs leading-relaxed ${
                     log.sender === 'owner'
                       ? 'bg-gradient-to-r from-neon-purple to-neon-purple/80 text-white self-end rounded-tr-none'
                       : 'bg-slate-900 border border-slate-800/80 text-slate-200 self-start rounded-tl-none'
@@ -286,11 +286,11 @@ export default function OwnerDashboard() {
                 value={ownerMsg}
                 onChange={(e) => setOwnerMsg(e.target.value)}
                 placeholder={`Type reply to ${chatStudent.split(' ')[0]}...`}
-                className="flex-1 px-3 py-2 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
+                className="flex-1 px-3 py-2 bg-slate-900/80 border border-slate-800 rounded-[14px] text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
               />
               <button
                 type="submit"
-                className="px-4 bg-neon-purple text-white font-bold rounded-xl text-xs hover:shadow-md cursor-pointer"
+                className="px-4 bg-neon-purple text-white font-bold rounded-[14px] text-xs hover:shadow-md cursor-pointer"
               >
                 Send
               </button>
@@ -303,19 +303,19 @@ export default function OwnerDashboard() {
         <div className="space-y-6">
           
           {/* Mess Menu Editor */}
-          <div className="glass p-6 rounded-2xl border border-slate-800/80 shadow-lg space-y-5">
+          <div className="glass p-6 rounded-[24px] border border-slate-800/80 shadow-lg space-y-5">
             <h3 className="font-extrabold text-lg text-slate-200 flex items-center gap-2">
               🍽️ Weekly Mess Customizer
             </h3>
 
             {/* Day Toggles */}
-            <div className="flex flex-wrap gap-1 bg-slate-900/60 p-1 rounded-xl border border-slate-800/80">
+            <div className="flex flex-wrap gap-1 bg-slate-900/60 p-1 rounded-[16px] border border-slate-800/80">
               {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
                 <button
                   key={day}
                   type="button"
                   onClick={() => setSelectedDay(day)}
-                  className={`flex-1 py-1.5 text-[10px] font-bold rounded-lg transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5 text-[10px] font-bold rounded-[12px] transition-all cursor-pointer ${
                     selectedDay === day
                       ? 'bg-neon-purple text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
@@ -328,12 +328,12 @@ export default function OwnerDashboard() {
 
             <form onSubmit={handleSaveMess} className="space-y-4">
               {saveMessSuccess && (
-                <div className="p-3 bg-neon-teal/10 border border-neon-teal/20 text-neon-teal rounded-xl text-xs font-semibold animate-fade-in">
+                <div className="p-3 bg-neon-teal/10 border border-neon-teal/20 text-neon-teal rounded-[12px] text-xs font-semibold animate-fade-in">
                   ✓ {selectedDay} Mess Menu saved!
                 </div>
               )}
 
-              <div className="space-y-3 bg-slate-950/40 p-4 rounded-xl border border-slate-800/60">
+              <div className="space-y-3 bg-slate-950/40 p-4 rounded-[16px] border border-slate-800/60">
                 <span className="text-xs font-bold text-neon-purple uppercase tracking-wider">{selectedDay} Menu Inputs</span>
                 
                 <div className="space-y-1 mt-2">
@@ -342,7 +342,7 @@ export default function OwnerDashboard() {
                     type="text"
                     value={breakfast}
                     onChange={(e) => setBreakfast(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
+                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-[12px] text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
                     placeholder="e.g. Aloo Paratha & Chai"
                     required
                   />
@@ -354,7 +354,7 @@ export default function OwnerDashboard() {
                     type="text"
                     value={lunch}
                     onChange={(e) => setLunch(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
+                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-[12px] text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
                     placeholder="e.g. Rajma Chawal & Curd"
                     required
                   />
@@ -366,7 +366,7 @@ export default function OwnerDashboard() {
                     type="text"
                     value={dinner}
                     onChange={(e) => setDinner(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
+                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-[12px] text-xs text-slate-200 focus:outline-none focus:border-neon-purple/60"
                     placeholder="e.g. Butter Roti & Paneer Masala"
                     required
                   />
@@ -376,7 +376,7 @@ export default function OwnerDashboard() {
               <button
                 type="submit"
                 disabled={saveMessLoading}
-                className="w-full py-2.5 bg-gradient-to-r from-neon-purple to-neon-blue text-white font-bold rounded-xl text-xs hover:shadow-md cursor-pointer flex items-center justify-center"
+                className="w-full py-2.5 bg-gradient-to-r from-neon-purple to-neon-blue text-white font-bold rounded-[14px] text-xs hover:shadow-md cursor-pointer flex items-center justify-center"
               >
                 {saveMessLoading ? 'Saving Menu...' : `Save ${selectedDay} Mess Menu`}
               </button>
@@ -384,7 +384,7 @@ export default function OwnerDashboard() {
           </div>
 
           {/* Student Food Reviews list */}
-          <div className="glass p-6 rounded-2xl border border-slate-800/80 shadow-lg space-y-4">
+          <div className="glass p-6 rounded-[24px] border border-slate-800/80 shadow-lg space-y-4">
             <div className="flex justify-between items-center pb-2 border-b border-slate-800/80">
               <h3 className="font-extrabold text-lg text-slate-200 flex items-center gap-2">
                 ⭐ Student Food Ratings
@@ -401,7 +401,7 @@ export default function OwnerDashboard() {
                 <p className="text-xs text-slate-500 text-center py-6">No food reviews left yet.</p>
               ) : (
                 pg?.reviews.map((rev) => (
-                  <div key={rev.id} className="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl space-y-1">
+                  <div key={rev.id} className="p-3.5 bg-slate-950/40 border border-slate-900 rounded-[16px] space-y-1">
                     <div className="flex justify-between text-[11px] font-bold">
                       <span className="text-slate-300">{rev.studentName}</span>
                       <span className="text-amber-400">{'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}</span>

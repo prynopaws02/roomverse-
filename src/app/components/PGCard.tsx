@@ -89,7 +89,7 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
   };
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-slate-200 transition-all duration-300 flex flex-col h-full group transform hover:-translate-y-1">
+    <div className="bg-white rounded-[24px] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-slate-100 transition-all duration-300 flex flex-col h-full group transform hover:-translate-y-1">
       {/* Listing Image */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-100">
         <Image
@@ -206,7 +206,7 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
         </p>
 
         {/* Quick info row */}
-        <div className="grid grid-cols-2 gap-2.5 mb-5 p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+        <div className="grid grid-cols-2 gap-2.5 mb-5 p-3 bg-slate-50 rounded-[16px] border border-slate-100 text-xs">
           <div className="flex items-center gap-2 text-slate-600 font-semibold">
             <span>🍽️ Food:</span>
             <span className="font-extrabold text-amber-600">★ {getAverageFoodRating()}</span>
@@ -221,7 +221,7 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
         <div className="mt-auto space-y-2">
           <button
             onClick={() => onViewDetails(pg)}
-            className="w-full py-2.5 bg-royal-green hover:bg-royal-green-hover text-white font-extrabold rounded-xl text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-sm shadow-emerald-800/10"
+            className="w-full py-2.5 bg-royal-green hover:bg-royal-green-hover text-white font-extrabold rounded-[14px] text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-sm shadow-emerald-800/10"
           >
             🔍 View Mess Menu & Safety details
           </button>
@@ -229,13 +229,13 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={() => onCall(pg)}
-              className="py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold rounded-xl text-xs transition-all border border-slate-200 flex items-center justify-center gap-1 cursor-pointer"
+              className="py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold rounded-[14px] text-xs transition-all border border-slate-200 flex items-center justify-center gap-1 cursor-pointer"
             >
               📞 Call Owner
             </button>
             <button
               onClick={() => onChat(pg)}
-              className="py-2.5 bg-emerald-50 hover:bg-emerald-100/80 text-royal-green font-bold rounded-xl text-xs transition-all border border-emerald-100 flex items-center justify-center gap-1 cursor-pointer"
+              className="py-2.5 bg-emerald-50 hover:bg-emerald-100/80 text-royal-green font-bold rounded-[14px] text-xs transition-all border border-emerald-100 flex items-center justify-center gap-1 cursor-pointer"
             >
               💬 Live Chat
             </button>
