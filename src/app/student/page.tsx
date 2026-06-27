@@ -489,11 +489,11 @@ export default function StudentDashboard() {
         <div className="flex justify-between items-center bg-white p-4 rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
           <div>
             <h2 className="text-lg font-black text-slate-800">
-              {activeSection === 'pg' ? 'Available PG Accommodations' : 'Verified Mess & Food Plans'}
+              {activeSection === 'pg' ? 'Popular PGs Near You' : 'Verified Mess & Food Plans'}
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
               {activeSection === 'pg' 
-                ? 'Showing accommodation options matching your filters' 
+                ? 'Available accommodations near you matching your filters' 
                 : `Browse weekly breakfast, lunch, and dinner plans for ${selectedDay}`}
             </p>
           </div>
@@ -516,7 +516,7 @@ export default function StudentDashboard() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:-mx-4 lg:-mx-6 xl:-mx-8 px-4 md:px-0">
             {filteredPgs.map((pg) => 
               activeSection === 'pg' ? (
                 <PGCard

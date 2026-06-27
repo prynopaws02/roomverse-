@@ -84,16 +84,37 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
           priority
         />
         
+        {/* Verified Badge floating on top-left of image */}
+        <div className="absolute top-2 left-2 z-10">
+          <span className="bg-emerald-600/90 text-white text-[8px] font-black uppercase px-1.5 py-0.5 rounded shadow-sm backdrop-blur-md flex items-center gap-0.5">
+            ✓ Verified
+          </span>
+        </div>
+
         {/* Compatibility Match Indicator on image */}
         {matchPercent !== null && (
-          <div className="absolute top-2 right-2">
-            <span className={`px-2 py-0.5 rounded-full text-[9px] font-black backdrop-blur-md border border-white/20 shadow-sm text-white ${
-              matchPercent >= 80 ? 'bg-emerald-600/90' : matchPercent >= 50 ? 'bg-emerald-700/90' : 'bg-rose-600/90'
+          <div className="absolute top-2 right-2 z-10">
+            <span className={`px-1.5 py-0.5 rounded text-[8px] font-black backdrop-blur-md border border-white/10 shadow-sm text-white ${
+              matchPercent >= 80 ? 'bg-emerald-700/90' : matchPercent >= 50 ? 'bg-emerald-800/90' : 'bg-rose-700/90'
             }`}>
               {matchPercent}% Match
             </span>
           </div>
         )}
+
+        {/* Floating Icons for Wi-Fi and CCTV inside bottom-left of image */}
+        <div className="absolute bottom-2 left-2 z-10 flex gap-1">
+          {pg.compatibility.wifi && (
+            <span className="w-5 h-5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-[10px]" title="Wi-Fi Available">
+              📶
+            </span>
+          )}
+          {pg.safetyBreakdown.cctv >= 80 && (
+            <span className="w-5 h-5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-[10px]" title="CCTV Active">
+              📹
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Card Details Area */}
@@ -124,23 +145,6 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
           <div className="flex items-center gap-1 text-[10px] text-slate-600 font-bold">
             <span>🍽️ Food:</span>
             <span className="font-black text-amber-500">★ {getAverageFoodRating()}</span>
-          </div>
-
-          {/* 6. Standout Badges (Wifi, Nestseeker verified, CCTV) */}
-          <div className="flex flex-wrap gap-1 pt-1">
-            <span className="text-[8px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100 px-1.5 py-0.5 rounded-md flex items-center gap-0.5 shrink-0">
-              ✓ Verified
-            </span>
-            {pg.compatibility.wifi && (
-              <span className="text-[8px] font-black bg-blue-50 text-blue-700 border border-blue-100 px-1.5 py-0.5 rounded-md shrink-0">
-                📶 Wi-Fi
-              </span>
-            )}
-            {pg.safetyBreakdown.cctv >= 80 && (
-              <span className="text-[8px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-1.5 py-0.5 rounded-md shrink-0">
-                📹 CCTV
-              </span>
-            )}
           </div>
         </div>
 

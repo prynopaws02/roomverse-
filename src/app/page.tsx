@@ -482,7 +482,7 @@ export default function Home() {
                 ROOMVERSE listings
               </span>
               <h2 className="text-2xl font-black text-white mt-2">
-                Popular homes {selectedLocation ? `in ${selectedLocation}` : 'nearby'}
+                Popular PGs {selectedLocation ? `in ${selectedLocation}` : 'near you'}
               </h2>
             </div>
             <div className="flex gap-2">
@@ -509,7 +509,7 @@ export default function Home() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {filteredPgs.map((pg) => (
                 <PGCard
                   key={pg.id}
