@@ -42,25 +42,22 @@ interface PGCardProps {
 }
 
 export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall, onChat }: PGCardProps) {
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-  
+  const [showReviewsInline, setShowReviewsInline] = useState(false);
+
   // Filter for verified student reviews
   const verifiedReviews = pg.reviews.filter((r) => r.verified !== false);
 
-  const nextReview = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentReviewIndex((prev) => (prev + 1) % verifiedReviews.length);
-  };
-
-  const prevReview = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentReviewIndex((prev) => (prev - 1 + verifiedReviews.length) % verifiedReviews.length);
+  // Get food rating average
+  const getAverageFoodRating = () => {
+    if (pg.reviews.length === 0) return 'N/A';
+    const sum = pg.reviews.reduce((acc, r) => acc + r.rating, 0);
+    return (sum / pg.reviews.length).toFixed(1);
   };
 
   // Calculate compatibility match percentage
   const calculateMatch = (): number | null => {
     const activePrefs = Object.entries(selectedPreferences).filter(([_, val]) => val);
-    if (activePrefs.length === 0) return null; // No preferences selected, don't show match indicator
+    if (activePrefs.length === 0) return null;
 
     let matches = 0;
     activePrefs.forEach(([key]) => {
@@ -74,172 +71,142 @@ export default function PGCard({ pg, selectedPreferences, onViewDetails, onCall,
 
   const matchPercent = calculateMatch();
 
-  // Determine safety score color
-  const getSafetyColor = (score: number) => {
-    if (score >= 90) return 'text-emerald-700 border-emerald-200 bg-emerald-50';
-    if (score >= 80) return 'text-royal-green border-emerald-100 bg-emerald-50/50';
-    return 'text-amber-700 border-amber-200 bg-amber-50';
-  };
-
-  // Get food rating average
-  const getAverageFoodRating = () => {
-    if (pg.reviews.length === 0) return 'N/A';
-    const sum = pg.reviews.reduce((acc, r) => acc + r.rating, 0);
-    return (sum / pg.reviews.length).toFixed(1);
-  };
-
   return (
-    <div className="bg-white rounded-[24px] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-slate-100 transition-all duration-300 flex flex-col h-full group transform hover:-translate-y-1">
-      {/* Listing Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+    <div className="bg-white rounded-[24px] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-slate-100 transition-all duration-300 flex flex-col h-full group transform hover:-translate-y-0.5">
+      {/* 1. Image first */}
+      <div className="relative h-32 w-full overflow-hidden bg-slate-100 shrink-0">
         <Image
           src={pg.image}
           alt={pg.name}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 15vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           priority
         />
         
-        {/* Safety Score Tag */}
-        <div className="absolute top-4 left-4 flex gap-2">
-          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getSafetyColor(pg.safetyScore)} shadow-sm`}>
-            🛡️ Safety: {pg.safetyScore}/100
-          </span>
-        </div>
-
-        {/* Dynamic Compatibility Match Indicator */}
+        {/* Compatibility Match Indicator on image */}
         {matchPercent !== null && (
-          <div className="absolute top-4 right-4 flex items-center justify-center">
-            <div className="relative w-12 h-12 rounded-full bg-white/95 border border-slate-200 shadow-sm backdrop-blur-md flex flex-col items-center justify-center">
-              <span className="text-[9px] text-slate-400 font-extrabold uppercase leading-none">Match</span>
-              <span className={`text-xs font-black mt-0.5 leading-none ${
-                matchPercent >= 80 ? 'text-emerald-600' : matchPercent >= 50 ? 'text-royal-green' : 'text-rose-600'
-              }`}>
-                {matchPercent}%
-              </span>
-              
-              {/* Stroke highlight ring */}
-              <div className={`absolute inset-0 rounded-full border-2 border-transparent ${
-                matchPercent >= 80 ? 'border-t-emerald-500 border-r-emerald-500' : matchPercent >= 50 ? 'border-t-royal-green border-r-royal-green' : 'border-t-rose-500'
-              } opacity-60 animate-spin`} style={{ animationDuration: '6s' }}></div>
-            </div>
+          <div className="absolute top-2 right-2">
+            <span className={`px-2 py-0.5 rounded-full text-[9px] font-black backdrop-blur-md border border-white/20 shadow-sm text-white ${
+              matchPercent >= 80 ? 'bg-emerald-600/90' : matchPercent >= 50 ? 'bg-emerald-700/90' : 'bg-rose-600/90'
+            }`}>
+              {matchPercent}% Match
+            </span>
           </div>
         )}
       </div>
 
-      {/* Verified Reviews Carousel below Image */}
-      <div className="bg-slate-50 border-b border-slate-100 px-4 py-3 min-h-[96px] flex flex-col justify-between relative">
-        {verifiedReviews.length > 0 ? (
-          <div className="flex flex-col h-full justify-between">
-            <div className="flex justify-between items-start">
-              <div className="flex items-center gap-1.5">
-                <span className="text-[9px] font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 flex items-center gap-1">
-                  <span className="text-[8px] animate-pulse text-emerald-600">●</span> Verified Student
-                </span>
-              </div>
-              <div className="flex items-center gap-0.5 text-amber-500 text-xs font-black">
-                {'★'.repeat(verifiedReviews[currentReviewIndex].rating)}
-                {'☆'.repeat(5 - verifiedReviews[currentReviewIndex].rating)}
-              </div>
-            </div>
-            
-            <p className="text-[11px] text-slate-600 italic line-clamp-2 mt-1.5 leading-relaxed font-semibold">
-              "{verifiedReviews[currentReviewIndex].comment}"
-            </p>
-
-            <div className="flex justify-between items-center mt-2 pt-1.5 border-t border-slate-200/60">
-              <span className="text-[10px] text-slate-500 font-bold">
-                — {verifiedReviews[currentReviewIndex].studentName}
+      {/* Card Details Area */}
+      <div className="p-3 flex-1 flex flex-col justify-between">
+        <div className="space-y-1.5">
+          {/* 2. PG Name and Rent */}
+          <div className="flex justify-between items-start gap-1">
+            <h4 className="font-extrabold text-[13px] text-slate-800 group-hover:text-royal-green transition-colors leading-tight line-clamp-1">
+              {pg.name}
+            </h4>
+            <div className="text-right shrink-0">
+              <span className="font-black text-xs text-royal-green leading-none">
+                ₹{pg.price.toLocaleString('en-IN')}
+                <span className="text-[9px] font-normal text-slate-400">/m</span>
               </span>
-              
-              {verifiedReviews.length > 1 && (
-                <div className="flex gap-1.5">
-                  <button
-                    onClick={prevReview}
-                    className="p-1 hover:bg-slate-200/80 rounded text-slate-400 hover:text-slate-600 transition-colors cursor-pointer border border-transparent"
-                    title="Previous review"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={nextReview}
-                    className="p-1 hover:bg-slate-200/80 rounded text-slate-400 hover:text-slate-600 transition-colors cursor-pointer border border-transparent"
-                    title="Next review"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
-              )}
             </div>
           </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center h-full text-center py-2">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">No reviews yet</span>
-            <p className="text-[10px] text-slate-500 mt-1">Be the first to leave a verified review!</p>
-          </div>
-        )}
-      </div>
 
-      {/* Details Area */}
-      <div className="p-5 flex-1 flex flex-col">
-        <div className="flex justify-between items-start mb-2 gap-2">
-          <h4 className="font-bold text-lg text-slate-800 group-hover:text-royal-green transition-colors leading-tight">
-            {pg.name}
-          </h4>
-          <div className="flex flex-col items-end">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Rent</span>
-            <span className="font-black text-xl text-royal-green leading-none">₹{pg.price.toLocaleString('en-IN')}<span className="text-xs font-normal text-slate-500">/mo</span></span>
-          </div>
-        </div>
+          {/* 3. Section Divider */}
+          <div className="border-t border-slate-100"></div>
 
-        <p className="text-xs text-slate-500 flex items-center gap-1 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-royal-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          {pg.location}
-        </p>
+          {/* 4. Location */}
+          <p className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold line-clamp-1">
+            📍 {pg.location.split(',')[0]}
+          </p>
 
-        {/* Quick info row */}
-        <div className="grid grid-cols-2 gap-2.5 mb-5 p-3 bg-slate-50 rounded-[16px] border border-slate-100 text-xs">
-          <div className="flex items-center gap-2 text-slate-600 font-semibold">
+          {/* 5. Food Rating */}
+          <div className="flex items-center gap-1 text-[10px] text-slate-600 font-bold">
             <span>🍽️ Food:</span>
-            <span className="font-extrabold text-amber-600">★ {getAverageFoodRating()}</span>
+            <span className="font-black text-amber-500">★ {getAverageFoodRating()}</span>
           </div>
-          <div className="flex items-center gap-2 text-slate-600 font-semibold">
-            <span>⚡ Wi-Fi:</span>
-            <span className="font-bold">{pg.compatibility.wifi ? 'Included' : 'No'}</span>
+
+          {/* 6. Standout Badges (Wifi, Nestseeker verified, CCTV) */}
+          <div className="flex flex-wrap gap-1 pt-1">
+            <span className="text-[8px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100 px-1.5 py-0.5 rounded-md flex items-center gap-0.5 shrink-0">
+              ✓ Verified
+            </span>
+            {pg.compatibility.wifi && (
+              <span className="text-[8px] font-black bg-blue-50 text-blue-700 border border-blue-100 px-1.5 py-0.5 rounded-md shrink-0">
+                📶 Wi-Fi
+              </span>
+            )}
+            {pg.safetyBreakdown.cctv >= 80 && (
+              <span className="text-[8px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-1.5 py-0.5 rounded-md shrink-0">
+                📹 CCTV
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Card Footer Actions */}
-        <div className="mt-auto space-y-2">
-          <button
-            onClick={() => onViewDetails(pg)}
-            className="w-full py-2.5 bg-royal-green hover:bg-royal-green-hover text-white font-extrabold rounded-[14px] text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-sm shadow-emerald-800/10"
-          >
-            🔍 View Mess Menu & Safety details
-          </button>
-          
-          <div className="grid grid-cols-2 gap-2">
+        {/* 7. Details Link (toggles inline reviews) */}
+        <div className="flex flex-col">
+          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
             <button
-              onClick={() => onCall(pg)}
-              className="py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold rounded-[14px] text-xs transition-all border border-slate-200 flex items-center justify-center gap-1 cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowReviewsInline(!showReviewsInline);
+              }}
+              className="text-[10px] font-extrabold text-royal-green hover:underline cursor-pointer flex items-center gap-0.5"
             >
-              📞 Call Owner
+              <span>{showReviewsInline ? 'Hide Reviews' : 'Details & Reviews'}</span>
+              <span>{showReviewsInline ? '▲' : '▼'}</span>
             </button>
-            <button
-              onClick={() => onChat(pg)}
-              className="py-2.5 bg-emerald-50 hover:bg-emerald-100/80 text-royal-green font-bold rounded-[14px] text-xs transition-all border border-emerald-100 flex items-center justify-center gap-1 cursor-pointer"
-            >
-              💬 Live Chat
-            </button>
+            
+            <div className="flex gap-1">
+              <button
+                onClick={(e) => { e.stopPropagation(); onCall(pg); }}
+                className="p-1 hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-500 hover:text-slate-700 cursor-pointer text-[10px]"
+                title="Call Owner"
+              >
+                📞
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); onChat(pg); }}
+                className="p-1 hover:bg-emerald-50 rounded-lg border border-emerald-100 text-royal-green hover:bg-emerald-100/50 cursor-pointer text-[10px]"
+                title="Live Chat"
+              >
+                💬
+              </button>
+            </div>
           </div>
+
+          {/* Inline Standout Reviews (generated upon details click) */}
+          {showReviewsInline && (
+            <div className="mt-2 p-2 bg-slate-50 border border-slate-100 rounded-[12px] animate-in fade-in slide-in-from-top-1 duration-200">
+              <span className="text-[8px] font-black text-slate-400 uppercase tracking-wider block mb-1">Standout Reviews</span>
+              {verifiedReviews.length > 0 ? (
+                <div className="space-y-1 max-h-24 overflow-y-auto pr-0.5">
+                  {verifiedReviews.slice(0, 2).map((rev) => (
+                    <div key={rev.id} className="text-[9px] text-slate-600 bg-white p-1 rounded-md border border-slate-100">
+                      <div className="flex justify-between items-center text-slate-400 text-[7px] font-bold">
+                        <span>— {rev.studentName}</span>
+                        <span className="text-amber-500">{'★'.repeat(rev.rating)}</span>
+                      </div>
+                      <p className="italic font-medium mt-0.5 line-clamp-2">"{rev.comment}"</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-[9px] text-slate-400 italic">No reviews found.</p>
+              )}
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onViewDetails(pg);
+                }}
+                className="w-full mt-2 py-1 bg-royal-green hover:bg-royal-green-hover text-white text-[9px] font-extrabold rounded-lg transition-colors text-center cursor-pointer"
+              >
+                Full Details & Mess Menu
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
